@@ -1,0 +1,14 @@
+<div class="container my-5">
+	<h1><%= @plant.name %></h1>
+
+	<% @plant.gardeners.each do |gardener| %>
+		<p><%= gardener.name %></p>
+	<% end %>
+
+	<%= simple_form_for [@plant, @gardener_plant] do |f| %>
+		<%= f.association :gardener, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+		<%= f.submit :Save %>
+	<% end %>
+</div>
+
+
